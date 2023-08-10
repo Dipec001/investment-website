@@ -3,31 +3,25 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_login import UserMixin, login_user, LoginManager, login_required, current_user, logout_user
 from forms import RegisterForm, LoginForm, ForgotPasswordForm, PasswordResetForm
 import smtplib
-import requests
 from datetime import datetime, timedelta
 import time
 import asyncio
 import threading
 import random
 import string
+import os
 
-
-# from flask_migrate import Migrate
-
-# celery = Celery(__name__)
-# celery.conf.broker_url = 'sqla+sqlite:///crypto_website.db'
-# celery.conf.result_backend = 'db+sqlite:///crypto_website.db'
-
-EMAIL = 'dpecchukwu@gmail.com'
-PASSWORD = 'gpveckweibweqkoj'
+EMAIL = os.environ.get('FLASK_EMAIL')
+PASSWORD = os.environ.get('FLASK_EMAIL_PASSWORD')
 
 API_KEY = 'V2RNZOK9B0N58A8A'
 
 app = Flask(__name__)
-app.config['SECRET_KEY'] = 'M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%'
+app.config['SECRET_KEY'] = os.environ.get('FLASK_KEY')
+
 
 # CREATE DATABASE
-app.config['SQLALCHEMY_DATABASE_URI'] = "sqlite:///crypto_website.db"
+app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('FLASK_DATABASE_URL')
 # Optional: But it will silence the deprecation warning in the console.
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
@@ -141,7 +135,7 @@ def contact():
         name = request.form['name']
         email = request.form['email']
         message = request.form['message']
-        send_email(name, email, message)
+        send_email(name, email, message, recipient_email=email)
         return render_template("contact.html", msg_sent=True)
     return render_template('contact.html')
 
@@ -167,7 +161,7 @@ def login():
         # Find user by email entered.
         user = User.query.filter_by(email=email.lower()).first()
         if not user:
-            flash("Email doesn't exist. Please check the email and try again.",'error')
+            flash("Email doesn't exist. Please check the email and try again.", 'error')
             return redirect(url_for('login'))
         else:
             if password == user.password:
@@ -186,10 +180,10 @@ def login():
                     # Send the verification code to the user's email
                     send_email('Verification Code', user.email, verification_code, recipient_email=email)
 
-                    flash("Account not verified. Please verify your account.",'error')
+                    flash("Account not verified. Please verify your account.", 'error')
                     return render_template('register_verification.html', form=login_form, email=email.lower())
             else:
-                flash("Password is not correct",'error')
+                flash("Password is not correct", 'error')
                 return redirect(url_for('login'))
 
     return render_template('login.html', form=login_form)
@@ -214,7 +208,7 @@ def forgot_password():
 
             # Send password reset email to user's email with token
             send_email('Password Reset',
-                       f'Your OTP:{token}', user.email,recipient_email=email)
+                       f'Your OTP:{token}', user.email, recipient_email=email)
             flash(f"Password reset OTP has been sent to your {email}.")
             return redirect(url_for('reset_password'))
         else:
@@ -224,7 +218,7 @@ def forgot_password():
     return render_template('forgot_password.html', form=form)
 
 
-@app.route('/reset_password', methods=['GET','POST'])
+@app.route('/reset_password', methods=['GET', 'POST'])
 def reset_password():
     form = PasswordResetForm()
     if request.method == 'POST':
@@ -260,16 +254,14 @@ def reset_password():
                 db.session.commit()
 
                 send_email('Password Reset Successful',
-                           f'Dear {user.name}, your have successfully reset your password.\n Please login with the new password', user.email,recipient_email=user.email)
+                           f'Dear {user.name}, Your have successfully reset your password.\n Please login with the new password',
+                           user.email, recipient_email=user.email)
                 flash('Your password has been reset. You can now log in with your new password.', 'success')
                 return redirect(url_for('login'))
         else:
             flash('Your Passwords must match', 'error')
 
     return render_template('reset_password.html', form=form)
-
-
-
 
 
 @app.route('/register', methods=['GET', 'POST'])
@@ -303,7 +295,7 @@ def register():
             session['email'] = email
 
             # Send the verification code to the user's email
-            send_email('Verification Code', new_user.email, verification_code,recipient_email=email)
+            send_email('Verification Code', new_user.email, verification_code, recipient_email=email)
 
             return render_template('register_verification.html', form=register_form, email=email)
     return render_template('register.html', form=register_form)
@@ -319,7 +311,7 @@ def register_verify():
     otp4 = str(request.form.get('otp4'))
     otp5 = str(request.form.get('otp5'))
     otp6 = str(request.form.get('otp6'))
-    verification_code = otp1+otp2+otp3+otp4+otp5+otp6
+    verification_code = otp1 + otp2 + otp3 + otp4 + otp5 + otp6
     user = User.query.filter_by(email=email).first()
 
     if user and verification_code == user.verification_code:
@@ -613,4 +605,4 @@ if __name__ == '__main__':
     event_loop_thread = threading.Thread(target=run_event_loop)
     event_loop_thread.start()
 
-    app.run(debug=True)
+    app.run(debug=False)
