@@ -1,3 +1,4 @@
+psycopg2-binary
 gunicorn==20.1.0
 certifi==2020.6.20
 chardet==3.0.4
