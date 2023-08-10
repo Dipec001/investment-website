@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>My Webpage</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <style>
+        body{
+            overflow-x: hidden;
+        }
+
+        /* CSS styles go here */
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .head {
+            background-image: url("https://images.unsplash.com/photo-1526398977052-654221a252b1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80");
+            background-size: cover;
+            background-position: center;
+            height: 600px;
+            margin: 0;
+            padding: 0;
+        }
+
+        .head h1 {
+            color: #F1D3B3;
+            text-align: center;
+            padding-top: 400px; /* Adjust as needed */
+            font-size: 80px;
+            font-style: ;
+        }
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 70px;
+            background-color: #222222;
+        }
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+          }
+
+        .singup {
+          color: #000;
+          text-transform: uppercase;
+          letter-spacing: 2px;
+          display: block;
+          font-weight: bold;
+          font-size: x-large;
+          margin-top: 1.5em;
+        }
+
+        .card {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          min-height: 350px;
+          width: 500px;
+          flex-direction: column;
+          gap: 35px;
+          border-radius: 15px;
+          background: #e3e3e3;
+          box-shadow: 16px 16px 32px #c8c8c8,
+                -16px -16px 32px #fefefe;
+          border-radius: 8px;
+        }
+
+        .inputBox,
+        .inputBox1 {
+          position: relative;
+          width: 250px;
+          margin-bottom: 40px;
+        }
+
+        .inputBox input,
+        .inputBox1 input {
+          width: 100%;
+          padding: 20px;
+          outline: none;
+          border: none;
+          color: #000;
+          font-size: 1em;
+          background: transparent;
+          border-left: 2px solid #000;
+          border-bottom: 2px solid #000;
+          transition: 0.1s;
+          border-bottom-left-radius: 8px;
+        }
+
+        .inputBox span,
+        .inputBox1 span {
+          margin-top: 5px;
+          position: absolute;
+          left: 0;
+          transform: translateY(-4px);
+          margin-left: 10px;
+          padding: 10px;
+          pointer-events: none;
+          font-size: 12px;
+          color: #000;
+          text-transform: uppercase;
+          transition: 0.5s;
+          letter-spacing: 3px;
+          border-radius: 8px;
+        }
+
+        .inputBox input:valid~span,
+        .inputBox input:focus~span {
+          transform: translateX(113px) translateY(-15px);
+          font-size: 0.8em;
+          padding: 5px 10px;
+          background: #000;
+          letter-spacing: 0.2em;
+          color: #fff;
+          border: 2px;
+        }
+
+        .inputBox1 input:valid~span,
+        .inputBox1 input:focus~span {
+          transform: translateX(156px) translateY(-15px);
+          font-size: 0.8em;
+          padding: 5px 10px;
+          background: #000;
+          letter-spacing: 0.2em;
+          color: #fff;
+          border: 2px;
+        }
+
+        .inputBox input:valid,
+        .inputBox input:focus,
+        .inputBox1 input:valid,
+        .inputBox1 input:focus {
+          border: 2px solid #000;
+          border-radius: 8px;
+        }
+
+        .inputBox.message input {
+          height: 150px;
+        }
+
+        .inputBox.message span {
+          margin-top: 0px;
+          transform: translateY(0);
+        }
+
+        .enter {
+          height: 45px;
+          width: 100px;
+          border-radius: 5px;
+          border: 2px solid #000;
+          cursor: pointer;
+          background-color: transparent;
+          transition: 0.5s;
+          text-transform: uppercase;
+          font-size: 10px;
+          letter-spacing: 2px;
+          margin-bottom: 3em;
+        }
+
+        .enter:hover {
+          background-color: rgb(0, 0, 0);
+          color: white;
+        }
+
+        /* settings for nav bar */
+        .navbar {
+          background-color: #fff;
+        }
+
+        .navbar-brand {
+          font-weight: bold;
+        }
+
+        .navbar-toggler {
+          border: none;
+        }
+
+        .navbar-toggler:focus {
+          outline: none;
+        }
+
+        .navbar-toggler-icon {
+          background-color: #000;
+        }
+
+        .navbar-nav .nav-link {
+          margin-right: 10px;
+        }
+
+        @media (max-width: 991.98px) {
+          .navbar-nav {
+            flex-direction: column;
+            background-color: white;
+          }
+        }
+        .logo {
+          max-width: 100%;
+          height: auto;
+          display: block;
+          width: 40px; /* Adjust the width as needed */
+        }
+        /* footer settings */
+        .footer {
+          margin-top: 100px;
+          background-color: #141829;
+          height: 80px;
+          color: white;
+        }
+        .copyright {
+          text-align: center;
+          margin-top: 30px;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top">
+        <div class="container" style="height: 60px; font-size: 15px;">
+          <a class="navbar-brand" href="{{ url_for('home')}}"><img class="logo" src="./static/images/mylogo.png" alt="Company logo"></a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav mx-auto">
+              <li class="nav-item">
+                <a class="nav-link" style="color: #000000;" href="{{ url_for('about')}}"><strong>About</strong></a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" style="color: #000000;" href="#"><strong> Services</strong></a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" style="color: #000000;" href="#"><strong>Terms and Conditions</strong></a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" style="color: #000000;" href="#"><strong>FAQs</strong></a>
+              </li>
+            </ul>
+            <ul class="navbar-nav">
+              <li class="nav-item">
+                <a class="nav-link" style="background-color: #F6F1F1; border-radius: 10px; color: #000000" href="{{ url_for('login')}}"><strong>Login</strong></a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" style="background-color: #002B5B; border-radius: 10px; color: white;" href="{{ url_for('register')}}"><strong>Sign-up</strong></a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    <div class="head">
+        {% if msg_sent: %}
+        <h1>Successfully sent your message</h1>
+        {% else: %}
+        <h1>Contact Us</h1>
+        {% endif %}
+    </div>
+    <div class="container">
+        <div class="card">
+            <a class="singup">Send us a message </a>
+            <form action="{{ url_for('contact')}}" method="POST">
+            <div class="inputBox1">
+                <input type="text" required="required" name="name">
+                <span class="user">Name</span>
+            </div>
+
+            <div class="inputBox email">
+                <input type="text" required="required" name="email">
+                <span>Email</span>
+            </div>
+
+            <div class="inputBox message">
+                <input type="text" required="required" name="message">
+                <span>Message</span>
+            </div>
+
+            <button class="enter">Send</button>
+            </form>
+        </div>
+    </div>
+    <section id="footer" style="margin-top: 200px;">
+        <div class="footer row">
+            <div class="col">
+               <p class="copyright"><span><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-c-circle" viewBox="0 0 16 16">
+                  <path d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8Zm15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0ZM8.146 4.992c-1.212 0-1.927.92-1.927 2.502v1.06c0 1.571.703 2.462 1.927 2.462.979 0 1.641-.586 1.729-1.418h1.295v.093c-.1 1.448-1.354 2.467-3.03 2.467-2.091 0-3.269-1.336-3.269-3.603V7.482c0-2.261 1.201-3.638 3.27-3.638 1.681 0 2.935 1.054 3.029 2.572v.088H9.875c-.088-.879-.768-1.512-1.729-1.512Z"/>
+                </svg></span>COPYRIGHT {{date}} ALL RIGHTS RESERVED</p>
+            </div>
+        </div>
+    </section>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

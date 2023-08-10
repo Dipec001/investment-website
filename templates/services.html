@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Services</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+  <style>
+    body {
+      font-family: EuclidSquare,sans-serif;
+      overflow-x: hidden;
+
+    }
+
+    .navbar {
+      background-color: #fff;
+    }
+
+    .navbar-brand {
+      font-weight: bold;
+    }
+
+    .navbar-toggler {
+      border: none;
+    }
+
+    .navbar-toggler:focus {
+      outline: none;
+    }
+
+    .navbar-toggler-icon {
+      background-color: #000;
+    }
+
+    .navbar-nav .nav-link {
+      margin-right: 10px;
+    }
+
+    @media (max-width: 991.98px) {
+      .navbar-nav {
+        flex-direction: column;
+        background-color: white;
+      }
+    }
+    #body {
+      margin-top: 100px;
+    }
+    .packages {
+      position: relative;
+      background-color: #F6F1F1;
+      height: 500px;
+      border-radius: 10px;
+      padding: 0;
+    }
+    h3 {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100px;
+      margin: 0;
+      padding: 0;
+      color: white;
+    }
+    .logo {
+      max-width: 100%;
+      height: auto;
+      display: block;
+      width: 50px; /* Adjust the width as needed */
+    }
+    .get-started {
+      position: absolute;
+      text-align: center;
+      padding: 10px 20px;
+      border: 3px solid #000;
+      border-radius: 15px;
+      background-color: white;
+    }
+    .packages p:hover {
+      color: white;
+      background-color: black;
+    }
+
+    /* footer settings */
+    .footer {
+      margin-top: 100px;
+      background-color: #141829;
+      height: 80px;
+      color: white;
+    }
+    .copyright {
+      text-align: center;
+      margin-top: 30px;
+    }
+    /* card settings */
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800;900&display=swap');
+
+    .card-div {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 100px 50px;
+        padding: 100px 50px;
+    }
+
+    .card-div .card {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+        width: 350px;
+        max-width: 100%;
+        height: 300px;
+        background: white;
+        border-radius: 20px;
+        transition: 0.5s;
+        box-shadow: 0 35px 80px rgba(0, 0, 0, 0.15);
+        padding-left: 24px;
+    }
+
+    .card-div .card:hover {
+        height: 400px;
+    }
+
+    .card-div .card .img-box {
+        position: absolute;
+        top: 20px;
+        width: 300px;
+        height: 220px;
+        background: #333;
+        border-radius: 12px;
+        overflow: hidden;
+        transition: 0.5s;
+    }
+
+    .card-div .card:hover .img-box {
+        top: -100px;
+        scale: 0.75;
+        box-shadow: 0 15px 45px rgba(0, 0, 0, 0.2);
+    }
+
+    .card-div .card .img-box img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+
+    }
+
+    .card-div .card .content {
+        position: absolute;
+        top: 252px;
+        width: 100%;
+        height: 35px;
+        padding: 0 30px;
+        text-align: center;
+        overflow: hidden;
+        transition: 0.5s;
+    }
+
+    .card-div .card:hover .content {
+        margin-left: -20px;
+        top: 130px;
+        height: 300px;
+    }
+
+    .card-div .card .content h2 {
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: var(--clr);
+    }
+
+    .card-div .card .content p {
+        color: #333;
+    }
+
+    .card-div .card .content a {
+        position: relative;
+        top: 15px;
+        display: inline-block;
+        padding: 12px 25px;
+        text-decoration: none;
+        background: var(--clr);
+        color: white;
+        font-weight: 500;
+    }
+
+    .card-div .card .content a:hover {
+        opacity: 0.8;
+    }
+
+    @media (max-width: 480px) {
+        .card-div .card {
+            width: 230px;
+            border-radius: 15px;
+        }
+
+        .card-div .card .img-box {
+            width: 185px;
+            border-radius: 10px;
+        }
+
+        .card-div .card .content p {
+            font-size: 0.8rem;
+        }
+
+        .card-div .card .content a {
+            font-size: 0.9rem;
+        }
+    }
+
+  </style>
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-light fixed-top">
+    <div class="container" style="height: 60px; font-size: 15px;">
+      <a class="navbar-brand" href="{{ url_for('home')}}"><img class="logo" src="./static/images/mylogo.png" alt="Company logo"></a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarCollapse">
+        <ul class="navbar-nav mx-auto">
+          <li class="nav-item">
+            <a class="nav-link" style="color: #000000;" href="{{ url_for('about')}}"><strong>About</strong></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" style="color: #000000;" href="{{ url_for('contact')}}"><strong>Contact</strong></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" style="color: #000000;" href="#"><strong>Terms and Conditions</strong></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" style="color: #000000;" href="{{ url_for('faqs')}}"><strong>FAQs</strong></a>
+          </li>
+        </ul>
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link" style="background-color: #F6F1F1; border-radius: 10px; color: #000000" href="{{ url_for('login')}}"><strong>Login</strong></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" style="background-color: #002B5B; border-radius: 10px; color: white;" href="{{ url_for('register')}}"><strong>Sign up</strong></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <div id="body" class="container pt-5">
+    <div class="row" style="margin-bottom: 150px;">
+      <div class="col" style="margin-right: 50px;">
+        <p><strong>All your trading needs in one place.</strong></p>
+        <p>Cryptocurrency Trading is the Forex (Foreign Exchange) of cryptocurrencies. This means, you are able to trade bitcoin and altcoin normally for USD and other currencies. Cryptocurrency Trading is an alternative way to get involved in the Crypto-World! Unlike mining, it doesn’t require mining hardware nor investing in bitcoin hyips or bitcoin cloud mining (which always has risk involved in their integrity).</p>
+        <p>Prolaxie is offering its Clients the possibility to profit, by taking advantage of cryptocurrency price movements. We make profitable trades exploiting the price difference in the open market on crypto exchanges at different times. We offer one of the best cryptocurrency trading services in the industry working with our high-tech equipment and advanced software for real crypto trading.</p>
+        <p><strong>Why Invest in Cryptocurrencies?</strong> </p>
+        <p>The skyrocketing rise in cryptocurrency value is shaking up the financial markets. Cryptocurrency market was valued at $500 billion U.S Dollars at the end of 2017. Its value rose over 360% from the beginning of 2017. Cryptocurrencies are known for their rapid price movements, providing potentially high returns on investment.</p>
+      </div>
+      <div class="col ">
+        <img style="width: 500px; height: 450px;" src="./static/images/services-image1.avif" alt="company-hall-image">
+      </div>
+    </div>
+  </div>
+  <div class="container card-div">
+        <div class="card" style="--clr: #009688">
+            <div class="img-box">
+                <img src="https://images.unsplash.com/photo-1639322537228-f710d846310a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1332&q=80">
+            </div>
+            <div class="content">
+                <h2>BASIC</h2>
+                <p><span>6%</span>ROI(Weekly)<br>7 DAYS</p>
+                <hr>
+                <p>
+                    Minimum Investment: $100
+                </p>
+                <hr>
+                <p>Maximum Investment: $9,999</p>
+                <a href="{{ url_for('register')}}">Get Started</a>
+            </div>
+        </div>
+        <div class="card" style="--clr: #FF3E7F">
+            <div class="img-box">
+                <img src="https://images.unsplash.com/photo-1639815188546-c43c240ff4df?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1332&q=80">
+            </div>
+            <div class="content">
+                <h2>ADVANCED</h2>
+                <p><span>10%</span>ROI(Weekly)<br>7 DAYS</p>
+                <hr>
+                <p>
+                    Minimum Investment: $10,000
+                </p>
+                <hr>
+                <p>Maximum Investment: $30,000</p>
+                <a href="{{ url_for('register')}}">Get Started</a>
+            </div>
+        </div>
+        <div class="card" style="--clr: #03A9F4">
+            <div class="img-box">
+                <img src="https://plus.unsplash.com/premium_photo-1674726322489-a4f63cde306f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=327&q=80">
+            </div>
+            <div class="content">
+                <h2>PROFESSIONAL</h2>
+                <p><span>15%</span>ROI(Weekly)<br>7 DAYS</p>
+                <hr>
+                <p>
+                    Minimum Investment: $30,000
+                </p>
+                <hr>
+                <p>Maximum Investment: $500,000</p>
+                <a href="{{ url_for('register')}}">Get Started</a>
+            </div>
+        </div>
+    </div>
+  <section id="footer" style="margin-top: 200px;">
+        <div class="footer row">
+            <div class="col">
+               <p class="copyright"><span><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-c-circle" viewBox="0 0 16 16">
+                  <path d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8Zm15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0ZM8.146 4.992c-1.212 0-1.927.92-1.927 2.502v1.06c0 1.571.703 2.462 1.927 2.462.979 0 1.641-.586 1.729-1.418h1.295v.093c-.1 1.448-1.354 2.467-3.03 2.467-2.091 0-3.269-1.336-3.269-3.603V7.482c0-2.261 1.201-3.638 3.27-3.638 1.681 0 2.935 1.054 3.029 2.572v.088H9.875c-.088-.879-.768-1.512-1.729-1.512Z"/>
+                </svg></span>COPYRIGHT {{date}} ALL RIGHTS RESERVED</p>
+            </div>
+        </div>
+    </section>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

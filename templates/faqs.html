@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://getbootstrap.com/docs/5.3/assets/css/docs.css" rel="stylesheet">
+    <title>FAQs</title>
+  <style>
+    html,body {
+      height: 100%;
+    }
+
+    body {
+      font-family: EuclidSquare,sans-serif;
+      overflow-x: hidden;
+      display: flex;
+    flex-direction: column; /* Set the body to be a flex container with column direction */
+    min-height: 100vh; /* Ensure the body takes up at least the full height of the viewport */
+
+    }
+
+    .navbar {
+      background-color: #fff;
+    }
+
+    .navbar-brand {
+      font-weight: bold;
+    }
+
+    .navbar-toggler {
+      border: none;
+    }
+
+    .navbar-toggler:focus {
+      outline: none;
+    }
+
+    .navbar-toggler-icon {
+      background-color: #000;
+    }
+
+    .navbar-nav .nav-link {
+      margin-right: 10px;
+    }
+
+    @media (max-width: 991.98px) {
+      .navbar-nav {
+        flex-direction: column;
+        background-color: white;
+      }
+    }
+    #body {
+      margin-top: 100px;
+      flex: 1; /* Allow the main content to grow and take up available space */
+      padding-top: 100px; /* Adjust the top padding as needed */
+    }
+
+    h3 {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100px;
+      margin: 0;
+      padding: 0;
+      color: white;
+    }
+    .logo {
+      max-width: 100%;
+      height: auto;
+      display: block;
+      width: 50px; /* Adjust the width as needed */
+    }
+    .get-started {
+      position: absolute;
+      text-align: center;
+      padding: 10px 20px;
+      border: 3px solid #000;
+      border-radius: 15px;
+      background-color: white;
+    }
+
+    /* footer settings */
+
+    .footer {
+      margin-top: auto;
+      background-color: #141829;
+      height: 80px;
+      color: white;
+    }
+    .copyright {
+      text-align: center;
+      margin-top: 30px;
+    }
+
+  </style>
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-light fixed-top">
+    <div class="container" style="height: 60px; font-size: 15px;">
+      <a class="navbar-brand" href="{{ url_for('home')}}"><img class="logo" src="./static/images/mylogo.png" alt="Company logo"></a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarCollapse">
+        <ul class="navbar-nav mx-auto">
+          <li class="nav-item">
+            <a class="nav-link" style="color: #000000;" href="{{ url_for('about')}}"><strong>About</strong></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" style="color: #000000;" href="{{ url_for('contact')}}"><strong>Contact</strong></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" style="color: #000000;" href="#"><strong> Services</strong></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" style="color: #000000;" href="#"><strong>Terms and Conditions</strong></a>
+          </li>
+        </ul>
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link" style="background-color: #F6F1F1; border-radius: 10px; color: #000000" href="{{ url_for('login')}}"><strong>Login</strong></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" style="background-color: #002B5B; border-radius: 10px; color: white;" href="{{ url_for('register')}}"><strong>Sign up</strong></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <div id="body" class="container pt-5">
+    <!-- Example Code -->
+
+    <div class="accordion" id="accordionExample">
+      <div class="accordion-item">
+        <h2 class="accordion-header">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne" fdprocessedid="qk1vnd">
+            WHY DO I NEED TO INVEST WITH PRIMEINVEST
+          </button>
+        </h2>
+        <div id="collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionExample" style="">
+          <div class="accordion-body">
+            <strong>Primeinvest</strong> stands for excellence, enterprise and Professionalism to a Million benchmark. We specialize in generating passive returns for our members through Foreign Exchange markets and drive innovate ideas through other diversification.
+          </div>
+        </div>
+      </div>
+      <div class="accordion-item">
+        <h2 class="accordion-header">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo" fdprocessedid="j562ap">
+            WHO IS PERMITTED TO JOIN OUR PLATFORM
+          </button>
+        </h2>
+        <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+          <div class="accordion-body">
+            As a rule of thumb, customers must be 18 or over to trade or invest in any of our plans. Our regulatory body requires that no customers under the age of 18 shall be allowed to open an account and we strictly enforce this.
+          </div>
+        </div>
+      </div>
+      <div class="accordion-item">
+        <h2 class="accordion-header">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree" fdprocessedid="us90e">
+            WHEN CAN I WITHDRAW MY EARNINGS
+          </button>
+        </h2>
+        <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+          <div class="accordion-body">
+            his depends on the period, as specified on your investment plan. Each package is unique and has specified time limit to access profit.
+          </div>
+        </div>
+      </div>
+      <div class="accordion-item">
+        <h2 class="accordion-header">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour" fdprocessedid="j562ap">
+            HOW LONG DOES IT TAKE TO RECEIVE MY EARNINGS?
+          </button>
+        </h2>
+        <div id="collapseFour" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+          <div class="accordion-body">
+            On completion of the withdrawal process, your money will be sent to you within 48 hours with the wallet address of your choice. Prolaxie provides efficient and guaranteed withdrawals.
+          </div>
+        </div>
+      </div>
+      <div class="accordion-item">
+        <h2 class="accordion-header">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive" fdprocessedid="j562ap">
+            HOW LONG DOES IT TAKE FOR MY DEPOSIT TO BE CREDITED INTO MY ACCOUNT
+          </button>
+        </h2>
+        <div id="collapseFive" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+          <div class="accordion-body">
+            AAs soon as deposit is confirmed. Typically takes 1-2 hour(s).
+          </div>
+        </div>
+      </div>
+      <div class="accordion-item">
+        <h2 class="accordion-header">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix" fdprocessedid="j562ap">
+            DO YOU CHARGE FEES FOR SERVICES?
+          </button>
+        </h2>
+        <div id="collapseSix" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+          <div class="accordion-body">
+            No, we do not charge for our services as we retain other profits made from trades before crediting the stipulated percentage returns to investors. Some investment options may require fees, in such cases the investor is advised properly.
+          </div>
+        </div>
+      </div>
+      <div class="accordion-item">
+        <h2 class="accordion-header">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSeven" aria-expanded="false" aria-controls="collapseSeven" fdprocessedid="j562ap">
+            WHAT IS THE POSSIBILITY THAT I WILL EARN?
+          </button>
+        </h2>
+        <div id="collapseSeven" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+          <div class="accordion-body">
+            There is always some percentage risk of losing funds but here you’re investing with an asset management company and we ensure that all invested funds are capital insured. This implies that should trading go south, the amount invested at the time of trading is covered by Insurance. We also have an Employee Negligence cover to the tune of one million dollars.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- End Example Code -->
+  </div>
+  <section id="footer" style="margin-top: 200px;">
+        <div class="footer row">
+            <div class="col">
+               <p class="copyright"><span><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-c-circle" viewBox="0 0 16 16">
+                  <path d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8Zm15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0ZM8.146 4.992c-1.212 0-1.927.92-1.927 2.502v1.06c0 1.571.703 2.462 1.927 2.462.979 0 1.641-.586 1.729-1.418h1.295v.093c-.1 1.448-1.354 2.467-3.03 2.467-2.091 0-3.269-1.336-3.269-3.603V7.482c0-2.261 1.201-3.638 3.27-3.638 1.681 0 2.935 1.054 3.029 2.572v.088H9.875c-.088-.879-.768-1.512-1.729-1.512Z"/>
+                </svg></span>COPYRIGHT {{date}} ALL RIGHTS RESERVED</p>
+            </div>
+        </div>
+    </section>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

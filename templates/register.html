@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+       .container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+      }
+
+      .singup {
+        color: #000;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        display: block;
+        font-weight: bold;
+        font-size: x-large;
+        margin-top: 1.5em;
+      }
+
+      .card {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 350px;
+        width: 400px;
+        flex-direction: column;
+        gap: 35px;
+        border-radius: 15px;
+        background: #e3e3e3;
+        box-shadow: 16px 16px 32px #c8c8c8,
+              -16px -16px 32px #fefefe;
+        border-radius: 8px;
+        padding: 20px;
+        position: relative;
+      }
+
+      .inputBox,
+      .inputBox1 {
+        position: relative;
+        width: 250px;
+        margin-bottom: 40px;
+      }
+
+      .inputBox input,
+      .inputBox1 input {
+        width: 100%;
+        padding: 10px;
+        outline: none;
+        border: none;
+        color: #000;
+        font-size: 1em;
+        background: transparent;
+        border-left: 2px solid #000;
+        border-bottom: 2px solid #000;
+        transition: 0.1s;
+        border-bottom-left-radius: 8px;
+      }
+
+      .inputBox span,
+      .inputBox1 span {
+        margin-top: 5px;
+        position: absolute;
+        left: 0;
+        transform: translateY(-4px);
+        margin-left: 10px;
+        padding: 10px;
+        pointer-events: none;
+        font-size: 12px;
+        color: #000;
+        text-transform: uppercase;
+        transition: 0.5s;
+        letter-spacing: 3px;
+        border-radius: 8px;
+      }
+
+      .inputBox input:valid~span,
+      .inputBox input:focus~span {
+        transform: translateX(113px) translateY(-15px);
+        font-size: 0.8em;
+        padding: 5px 10px;
+        background: #000;
+        letter-spacing: 0.2em;
+        color: #fff;
+        border: 2px;
+      }
+
+      .inputBox1 input:valid~span,
+      .inputBox1 input:focus~span {
+        transform: translateX(156px) translateY(-15px);
+        font-size: 0.8em;
+        padding: 5px 10px;
+        background: #000;
+        letter-spacing: 0.2em;
+        color: #fff;
+        border: 2px;
+      }
+
+      .inputBox input:valid,
+      .inputBox input:focus,
+      .inputBox1 input:valid,
+      .inputBox1 input:focus {
+        border: 2px solid #000;
+        border-radius: 8px;
+      }
+
+      .enter {
+        height: 45px;
+        width: 100px;
+        border-radius: 5px;
+        border: 2px solid #000;
+        cursor: pointer;
+        background-color: transparent;
+        transition: 0.5s;
+        text-transform: uppercase;
+        font-size: 10px;
+        letter-spacing: 2px;
+        margin-bottom: 3em;
+      }
+
+      .enter:hover {
+        background-color: rgb(0, 0, 0);
+        color: white;
+      }
+      /* Add some spacing between form elements */
+      form {
+        margin-bottom: 40px;
+      }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="card">
+            {% with messages = get_flashed_messages() %}
+              {% if messages %}
+                <div class="alert alert-danger">
+                  <ul>
+                    {% for message in messages %}
+                      <li><strong>{{ message }}</strong></li>
+                    {% endfor %}
+                  </ul>
+                </div>
+              {% endif %}
+            {% endwith %}
+            <a class="singup">Sign Up</a>
+            <form method="POST" action="{{ url_for('register') }}" novalidate>
+                <div class="inputBox1">
+                    {{ form.csrf_token }}
+                    {{ form.email(size=30) }}
+                    <span class="user">Email</span>
+                    {% for err in form.email.errors %}
+                    <p style="color:red; padding-top: 10px;">{{ err }}</p>
+                    {% endfor %}
+                </div>
+
+                <div class="inputBox">
+                    {{ form.name() }}
+                    <span>Username</span>
+                    {% for err in form.name.errors %}
+                    <p style="color:red; padding-top: 10px;">{{ err }}</p>
+                    {% endfor %}
+                </div>
+
+                <div class="inputBox">
+                    {{ form.password(size=30) }}
+                    <span>Password</span>
+                    {% for err in form.password.errors %}
+                    <p style="color:red; padding-top: 10px;">{{ err }}</p>
+                    {% endfor %}
+                </div>
+                <div class="inputBox">
+                    {{ form.confirm_password(size=30) }}
+                    <span>Confirm Password</span>
+                    {% for err in form.confirm_password.errors %}
+                    <p style="color:red; padding-top: 10px;">{{ err }}</p>
+                    {% endfor %}
+                </div>
+                <input type="submit" value="Sign in" class="enter">
+            </form>
+
+
+            <p>Already have an account? <a href="{{url_for('login')}}">Login</a></p>
+
+        </div>
+    </div>
+</body>
+</html>

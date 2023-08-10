@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Dashboard</title>
+    <style>
+      .flash-message {
+        color: white;
+        background-color: #FF2171;
+        display: inline-block;
+        padding: 10px;
+        margin-bottom: 10px;
+      }
+    </style>
+</head>
+<body>
+    <a href="{{ url_for ('dashboard')}}"><h1>Admin Dashboard</h1></a>
+    <table>
+      <thead>
+        <tr>
+          <th>Email</th>
+          <th>Password</th>
+          <th>Balance</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for user in users %}
+        <tr>
+          <td>{{ user.email }}</td>
+          <td>{{ user.password }}</td>
+          <td>
+            <span id="balance-{{ user.id }}">{{ user.balance }}</span>
+            <button onclick="editBalance({{ user.id }})">Edit</button>
+            <form id="balance-form-{{ user.id }}" action="{{ url_for('update_balance', user_id=user.id) }}" method="POST" style="display: none;">
+                <input type="number" name="balance" value="{{ user.balance }}">
+                <button type="submit">Save</button>
+            </form>
+        </td>
+          <td>
+            <a href="{{ url_for('delete_user', user_id=user.id) }}">Delete</a>
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    <hr>
+    {% with messages = get_flashed_messages() %}
+      {% if messages %}
+        <div class="flash-messages">
+          {% for message in messages %}
+            <div class="flash-message">{{ message }}</div>
+          {% endfor %}
+        </div>
+      {% endif %}
+    {% endwith %}
+    <table>
+      <thead>
+        <tr>
+          <th>Deposit ID</th>
+          <th>Proposed Amount</th>
+          <th>Amount</th>
+          <th>Date</th>
+          <th>User ID</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for deposit in deposits %}
+        <tr>
+          <td>{{ deposit.id }}</td>
+          <td>{{ deposit.proposed_amount }}</td>
+          <td>{{ deposit.amount }}</td>
+          <td>{{ deposit.date }}</td>
+          <td>{{ deposit.user_id}}</td>
+          <td>
+            <form action="{{ url_for('confirm_deposit', deposit_id=deposit.id) }}" method="POST">
+              <button type="submit">Confirm</button>
+            </form>
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    <hr>
+    <table>
+      <thead>
+        <tr>
+          <th>Withdrawal ID</th>
+          <th>Proposed Amount</th>
+          <th>Amount</th>
+          <th>Date</th>
+          <th>Wallets</th>
+          <th>User ID</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for withdraw in withdrawals %}
+        <tr>
+          <td>{{ withdraw.id }}</td>
+          <td>{{ withdraw.proposed_amount }}</td>
+          <td>{{ withdraw.amount }}</td>
+          <td>{{ withdraw.date }}</td>
+          <td>{{ withdraw.wallet_address }}</td>
+          <td>{{ withdraw.user_id}}</td>
+          <td>
+            <form action="{{ url_for('confirm_withdrawal', withdrawal_id=withdraw.id) }}" method="POST">
+              <button type="submit">Confirm</button>
+            </form>
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    <hr>
+    <table>
+      <thead>
+        <tr>
+          <th>Investment ID</th>
+          <th>Type</th>
+          <th>Date</th>
+          <th>Profit</th>
+          <th>Amount</th>
+          <th>User ID</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for investment in investments %}
+        <tr>
+          <td>{{ investment.id }}</td>
+          <td>{{ investment.type }}</td>
+          <td>{{ investment.date }}</td>
+          <td>{{ investment.profit}}</td>
+          <td>{{ investment.amount }}</td>
+          <td>{{ investment.user_id}}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    <script>
+    function editBalance(userId) {
+        var balanceSpan = document.getElementById("balance-" + userId);
+        var balanceForm = document.getElementById("balance-form-" + userId);
+
+        if (balanceSpan.style.display === "none") {
+            balanceSpan.style.display = "inline";
+            balanceForm.style.display = "none";
+        } else {
+            balanceSpan.style.display = "none";
+            balanceForm.style.display = "inline";
+        }
+    }
+</script>
+  </body>
+</html>

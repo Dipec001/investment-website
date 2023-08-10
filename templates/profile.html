@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <link href='https://fonts.googleapis.com/css?family=Dekko' rel='stylesheet'>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        body {
+          margin: 0;
+          padding: 0;
+          overflow-x: hidden;
+          background-color: #141829;
+          font-family: Dekko;
+          font-size: 22px;
+        }
+        #sidebar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 280px;
+            height: 100vh;
+            background-color: #141829;
+            transition: transform 0.3s ease-in-out;
+            z-index: 999;
+            overflow-y: auto;
+        }
+
+
+        li {
+            padding: 10px 0;
+            position: relative;
+            cursor: pointer;
+            list-style-type: none;
+        }
+        li a {
+            text-decoration: none;
+            color: white;
+        }
+        li a:hover {
+            color: #F2DEA8;
+        }
+
+        h2 {
+            background-color: #000000;
+            padding: 20px 0px;
+            margin-top: 0px;
+            margin-bottom: 0px;
+        }
+        .container {
+            background-color: #383838;
+            height: 82px;
+            margin: 0;
+            box-sizing: border-box;
+        }
+        .portfolio {
+            margin-top: 50px;
+            margin-right: 20px; /* Adjust the margin as needed */
+            min-height: calc(100vh - 50px);
+
+        }
+        button {
+          --bg: #e74c3c;
+          --text-color: #fff;
+          position: relative;
+          width: 100px;
+          height: 50px;
+          border: none;
+          background: var(--bg);
+          color: var(--text-color);
+          padding: 1em;
+          font-weight: bold;
+          text-transform: uppercase;
+          transition: 0.2s;
+          border-radius: 5px;
+          opacity: 0.8;
+          letter-spacing: 1px;
+          box-shadow: #c0392b 0px 7px 2px, #000 0px 8px 5px;
+          display: flex; /* Add this line */
+          justify-content: center; /* Add this line */
+          align-items: center; /* Add this line */
+        }
+
+        button:hover {
+          opacity: 1;
+        }
+
+        button:active {
+          top: 4px;
+          box-shadow: #c0392b 0px 3px 2px,#000 0px 3px 5px;
+        }
+
+        .card {
+            width: auto;
+            height: 100vh;
+            margin-top: 80px;
+            margin-left: 20px; /* Adjust the margin as needed */
+            margin-right: 20px; /* Adjust the margin as needed */
+            background-color: white;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            padding: 50px;
+
+        }
+        .the-body {
+            margin-bottom: 100px;
+        }
+        .input-box {
+            width: 300px;
+            height: 50px;
+            border-style: solid;
+            border-width: 5px;
+            border-radius: 10px;
+        }
+        button {
+          --bg: #e74c3c;
+          --text-color: #fff;
+          position: relative;
+          width: 100px;
+          height: 50px;
+          border: none;
+          background: var(--bg);
+          color: var(--text-color);
+          padding: 1em;
+          font-weight: bold;
+          text-transform: uppercase;
+          transition: 0.2s;
+          border-radius: 5px;
+          opacity: 0.8;
+          letter-spacing: 1px;
+          box-shadow: #c0392b 0px 7px 2px, #000 0px 8px 5px;
+          display: flex; /* Add this line */
+          justify-content: center; /* Add this line */
+          align-items: center; /* Add this line */
+          margin-bottom: 50px;
+          margin-left: 20px;
+        }
+
+        button:hover {
+          opacity: 1;
+        }
+
+        button:active {
+          top: 4px;
+          box-shadow: #c0392b 0px 3px 2px,#000 0px 3px 5px;
+        }
+        /* toggle effect */
+        .sidebar-collapsed {
+            transform: translateX(-100%);
+
+        }
+        .toggle-button {
+            position: fixed;
+            top: 10px;
+            left: 10px;
+            z-index: 999;
+            cursor: pointer;
+            color: #EBF5EE;
+            transition: color 0.3s ease-in-out;
+            font-size: 15px;
+        }
+        .toggle-button.clicked {
+            color: transparent;
+        }
+        .content {
+            transition: margin-left 0.3s ease-in-out;
+        }
+        .content-collapsed {
+            margin-left: 0 !important;
+        }
+        .nav-link {
+            background-color: transparent;
+            color: white;
+        }
+
+        .nav-link:hover {
+            background-color: white;
+            color: blue;
+        }
+
+    </style>
+</head>
+<body>
+    <div id="sidebar" class="sidebar-collapsed">
+      <div class="d-flex flex-column flex-shrink-0 p-3" style="width: 280px; height: 100vh; display: flex; flex-direction: column; border-right: 1px solid #535962;">
+        <div class="sidebar-content" style="overflow-y: auto;">
+          <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
+            <svg class="bi pe-none me-2" width="40" height="32"><use xlink:href="#bootstrap"></use></svg>
+            <span class="fs-4"><strong>PrimeInvest</strong></span>
+          </a>
+          <hr>
+        <ul class="nav nav-pills flex-column mb-auto">
+          <li class="nav-item">
+            <a href="#" class="nav-link active" aria-current="page">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-house-fill" viewBox="0 0 16 16">
+                  <path d="M8.707 1.5a1 1 0 0 0-1.414 0L.646 8.146a.5.5 0 0 0 .708.708L8 2.207l6.646 6.647a.5.5 0 0 0 .708-.708L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.707 1.5Z"/>
+                  <path d="m8 3.293 6 6V13.5a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 2 13.5V9.293l6-6Z"/>
+                </svg>
+              Home
+            </a>
+          </li>
+          <li>
+            <a href="#" class="nav-link">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-speedometer" viewBox="0 0 20 20">
+                  <path d="M8 2a.5.5 0 0 1 .5.5V4a.5.5 0 0 1-1 0V2.5A.5.5 0 0 1 8 2zM3.732 3.732a.5.5 0 0 1 .707 0l.915.914a.5.5 0 1 1-.708.708l-.914-.915a.5.5 0 0 1 0-.707zM2 8a.5.5 0 0 1 .5-.5h1.586a.5.5 0 0 1 0 1H2.5A.5.5 0 0 1 2 8zm9.5 0a.5.5 0 0 1 .5-.5h1.5a.5.5 0 0 1 0 1H12a.5.5 0 0 1-.5-.5zm.754-4.246a.389.389 0 0 0-.527-.02L7.547 7.31A.91.91 0 1 0 8.85 8.569l3.434-4.297a.389.389 0 0 0-.029-.518z"/>
+                  <path fill-rule="evenodd" d="M6.664 15.889A8 8 0 1 1 9.336.11a8 8 0 0 1-2.672 15.78zm-4.665-4.283A11.945 11.945 0 0 1 8 10c2.186 0 4.236.585 6.001 1.606a7 7 0 1 0-12.002 0z"/>
+              </svg>
+              Dashboard
+            </a>
+          </li>
+          <li>
+            <a href="{{url_for('deposit')}}" class="nav-link">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-wallet-fill" viewBox="0 0 20 20">
+                  <path d="M1.5 2A1.5 1.5 0 0 0 0 3.5v2h6a.5.5 0 0 1 .5.5c0 .253.08.644.306.958.207.288.557.542 1.194.542.637 0 .987-.254 1.194-.542.226-.314.306-.705.306-.958a.5.5 0 0 1 .5-.5h6v-2A1.5 1.5 0 0 0 14.5 2h-13z"/>
+                  <path d="M16 6.5h-5.551a2.678 2.678 0 0 1-.443 1.042C9.613 8.088 8.963 8.5 8 8.5c-.963 0-1.613-.412-2.006-.958A2.679 2.679 0 0 1 5.551 6.5H0v6A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-6z"/>
+                </svg>
+              Deposit
+            </a>
+          </li>
+          <li>
+            <a href="{{url_for('withdraw')}}" class="nav-link">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-cash-coin" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M11 15a4 4 0 1 0 0-8 4 4 0 0 0 0 8zm5-4a5 5 0 1 1-10 0 5 5 0 0 1 10 0z"/>
+                  <path d="M9.438 11.944c.047.596.518 1.06 1.363 1.116v.44h.375v-.443c.875-.061 1.386-.529 1.386-1.207 0-.618-.39-.936-1.09-1.1l-.296-.07v-1.2c.376.043.614.248.671.532h.658c-.047-.575-.54-1.024-1.329-1.073V8.5h-.375v.45c-.747.073-1.255.522-1.255 1.158 0 .562.378.92 1.007 1.066l.248.061v1.272c-.384-.058-.639-.27-.696-.563h-.668zm1.36-1.354c-.369-.085-.569-.26-.569-.522 0-.294.216-.514.572-.578v1.1h-.003zm.432.746c.449.104.655.272.655.569 0 .339-.257.571-.709.614v-1.195l.054.012z"/>
+                  <path d="M1 0a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h4.083c.058-.344.145-.678.258-1H3a2 2 0 0 0-2-2V3a2 2 0 0 0 2-2h10a2 2 0 0 0 2 2v3.528c.38.34.717.728 1 1.154V1a1 1 0 0 0-1-1H1z"/>
+                  <path d="M9.998 5.083 10 5a2 2 0 1 0-3.132 1.65 5.982 5.982 0 0 1 3.13-1.567z"/>
+                </svg>
+              <span class="">Withdraw</span>
+            </a>
+          </li>
+          <li>
+            <a href="{{url_for('invest')}}" class="nav-link">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-bar-chart-fill" viewBox="0 0 20 20">
+                  <path d="M1 11a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1v-3zm5-4a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v7a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V7zm5-5a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1V2z"/>
+                </svg>
+              <span class="">Invest</span>
+            </a>
+          </li>
+          {% if current_user.id == 1: %}
+            <li>
+            <a href="{{url_for('admin_dashboard')}}" class="nav-link">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-badge-ad" viewBox="0 0 16 16">
+                <path d="m3.7 11 .47-1.542h2.004L6.644 11h1.261L5.901 5.001H4.513L2.5 11h1.2zm1.503-4.852.734 2.426H4.416l.734-2.426h.053zm4.759.128c-1.059 0-1.753.765-1.753 2.043v.695c0 1.279.685 2.043 1.74 2.043.677 0 1.222-.33 1.367-.804h.057V11h1.138V4.685h-1.16v2.36h-.053c-.18-.475-.68-.77-1.336-.77zm.387.923c.58 0 1.002.44 1.002 1.138v.602c0 .76-.396 1.2-.984 1.2-.598 0-.972-.449-.972-1.248v-.453c0-.795.37-1.24.954-1.24z"/>
+                <path d="M14 3a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h12zM2 2a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H2z"/>
+              </svg>
+              <span class="">Admin Space</span>
+            </a>
+          </li>
+          {% endif %}
+        </ul>
+        </div>
+        <div class="mt-auto">
+          <div class="dropdown">
+            <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+              <img src="https://cdn.pixabay.com/photo/2019/08/11/18/59/icon-4399701_1280.png" alt="" width="32" height="32" class="rounded-circle me-2">
+              <strong>{{name}}</strong>
+            </a>
+            <ul class="dropdown-menu dropdown-menu-dark text-small shadow" style="">
+              <li><a class="dropdown-item" href="#">Settings</a></li>
+              <li><a class="dropdown-item" href="{{ url_for('profile')}}">Profile</a></li>
+              <li><hr class="dropdown-divider"></li>
+              <li><a class="dropdown-item" href="{{ url_for('logout')}}">Sign out</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+        <div class="row the-body">
+            <h3>PROFILE DETAILS</h3>
+            <hr>
+        </div>
+        <div class="row">
+            <div class="col-4">
+                Name
+            </div>
+            <div class="col-8">
+                {{current_user.name}}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-4">
+                Email
+            </div>
+            <div class="col-8">
+                {{current_user.email}}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-4">
+                TEl
+            </div>
+            <div class="col-8">
+                +1 (000) 00000
+            </div>
+        </div>
+
+
+    </div>
+
+    <div class="toggle-button" id="sidebar-toggle">
+        <i class="fas fa-bars fa-2x"></i>
+    </div>
+   <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            var sidebarToggle = document.getElementById("sidebar-toggle");
+            var sidebar = document.getElementById("sidebar");
+            var content = document.querySelector(".portfolio");
+
+            sidebarToggle.addEventListener("click", function() {
+                sidebar.classList.toggle("sidebar-collapsed");
+                sidebarToggle.classList.toggle("clicked");
+                content.classList.toggle("content-collapsed");
+            });
+
+            document.addEventListener("click", function(event) {
+                if (!sidebar.contains(event.target) && !sidebarToggle.contains(event.target)) {
+                    if (!sidebar.classList.contains("sidebar-collapsed")) {
+                        sidebar.classList.add("sidebar-collapsed");
+                        sidebarToggle.classList.remove("clicked");
+                        content.classList.remove("content-collapsed");
+                    }
+                }
+            });
+        });
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+</body>
+</html>

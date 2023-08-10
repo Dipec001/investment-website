@@ -1,0 +1,312 @@
+{% include "header.html" %}
+
+    <!-- Carousel -->
+  <div id="myCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3000">
+    <!-- Indicators (three horizontal lines) -->
+    <ol class="carousel-indicators">
+      <li data-bs-target="#myCarousel" data-bs-slide-to="0" class="active"></li>
+      <li data-bs-target="#myCarousel" data-bs-slide-to="1"></li>
+      <li data-bs-target="#myCarousel" data-bs-slide-to="2"></li>
+    </ol>
+
+    <!-- Slides -->
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img src="./static/images/carousel1.png" alt="Slide 1" class="d-block w-100  darker-image">
+        <div class="carousel-caption">
+           <h4>WELCOME TO</h4>
+           <h1>PRIME INVEST</h1>
+           <h2>Trading, Consulting & Management</h2>
+<!--           <button class="get-started">-->
+<!--               <span>GET STARTED</span>-->
+<!--           </button>-->
+        </div>
+      </div>
+      <div class="carousel-item">
+        <img src="./static/images/carousel2.jpg" alt="Slide 2" class="d-block w-100 dark-image">
+        <div class="carousel-caption">
+          <h4>conquer your trading fears with our</h4>
+          <h1>SCALABLE</h1>
+          <h2>SOLUTIONS</h2>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <img src="./static/images/carousel3.jpg" alt="Slide 3" class="d-block w-100">
+        <div class="carousel-caption">
+          <h4>invest & monitor your profits</h4>
+          <h1>ANYWHERE</h1>
+          <h2>ANYTIME</h2>
+        </div>
+      </div>
+    </div>
+
+    <!-- Left and Right Navigation Arrows -->
+    <a class="carousel-control-prev" href="#myCarousel" role="button" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </a>
+    <a class="carousel-control-next" href="#myCarousel" role="button" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </a>
+  </div>
+
+    <div class="centered-container company-into" style="margin-top: 300px;">
+        <div class="row">
+            <div class="col intro1 text-center">
+                <h5 style="font-size: 30px; margin_bottom: 100px;">
+                    We are one of the most effective <br> Trading &amp; Consulting Companies
+                </h5>
+                <p style="margin-top: 50px;">
+                    Prime invest is a US-based investment and asset management company.<br>
+                    <strong>PrimeInvest was incorporated on 24/06/1998 in Pennsylvania, USA.</strong><br> After long consultations and analytical
+                    investigation of brokerage services, it was decided to create a company.<br> At the initial stage,
+                    company’s business was focused on providing trust services<br> to a relatively small coterie of
+                    institutional and big private investors.
+                </p>
+                <a href="{{url_for('services')}}" class="read-more">
+                    READ MORE
+                </a>
+            </div>
+        </div>
+    </div>
+    <section id="services" style="margin-top: 300px;">
+      <div class="container text-center">
+        <div class="row">
+          <div class="col-sm-12 col-md-4">
+            <img class="service-img" src="./static/images/service_icon_1-1.png">
+            <h6>
+                <a class="services" href="#">Crypto Trading</a>
+            </h6>
+            <p>
+                Cryptocurrency Trading is the Forex (Foreign Exchange) of cryptocurrencies. This means, you are able
+                to trade different bitcoin and altcoin normally for USD and BTC. Cryptocurrency Trading is an
+                alternative way to get involved in the Crypto-World.
+            </p>
+          </div>
+          <div class="col-sm-12 col-md-4">
+            <img class="service-img" src="./static/images/service_icon_2-1.png">
+            <h6>
+                <a class="services" href="#">Bitcoin Mining</a>
+            </h6>
+            <p>
+                We mine bitcoins with our modern-day and maximum state-of-the-art S9 antminer hardware. This
+                hardware is mainly designed to mine bitcoins without delay into the host wallet and afterwards share
+                among investors.
+            </p>
+          </div>
+          <div class="col-sm-12 col-md-4">
+            <img class="service-img" src="./static/images/service_icon_3-1.png">
+            <h6>
+                <a class="services" href="#">Forex Trading</a>
+            </h6>
+            <p>
+                Basically, the Forex market is where banks, governments and traders come to exchange and speculate
+                on currencies. The Forex market is also referred to as the ‘Fx market’ or ‘Foreign currency market’.
+            </p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-12 col-md-4">
+            <img class="service-img" src="./static/images/service_icon_4-1.png">
+            <h6>
+                <a class="services" href="#">Non Farm Payroll</a>
+            </h6>
+            <p>
+                The Non-farm payrolls document is one of the most expected financial information reviews in the
+                foreign exchange markets. It is posted the first Friday of every month at 8:30AM Eastern time by the
+                U.S. Bureau of labor statistics. Another metric included in the data release is the unemployment
+                rate.
+            </p>
+          </div>
+          <div class="col-sm-12 col-md-4">
+            <img class="service-img" src="./static/images/service_icon_5-1.png">
+            <h6>
+                <a class="services" href="#">Escrow</a>
+            </h6>
+            <p>
+                Escrow is a legal concept wherein a monetary value or an asset is held via way of means of a 3rd
+                party on behalf of different parties which can be in the procedure of finishing a transaction.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+      <section id="steps">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-12 col-lg-4">
+                    <div>
+                        <h2 class="step-title">
+                            <span class="color-main">01</span>Life Work Balance</h2>
+                    </div>
+                </div>
+                <div class="col-12 col-lg-4">
+                    <div class="text-center steps">
+                        <img src="https://images.unsplash.com/photo-1533928298208-27ff66555d8d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Image">
+                    </div>
+                </div>
+                <div class="col-12 col-lg-4">
+                    <div class="">
+                        <p class="">Do you live a busy, complex life? Not to worry we got you covered.</p>
+                    </div>
+                </div>
+                <div>
+                    <img class="arrow" src="./static/images/white-arrow.png" alt="">
+                </div>
+            </div>
+            <div class="row align-items-center">
+                <div class="col-12 col-lg-4  order-lg-3">
+                    <div class="step-left-part">
+                        <h2 class="step-title color1">
+                            <span class="color-main2">02</span>Management</h2>
+                    </div>
+                </div>
+                <div class="col-12 col-lg-4 order-lg-2">
+                    <div class="step-center-part text-center steps">
+                        <img src="https://images.unsplash.com/photo-1600880292089-90a7e086ee0c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=387&q=80" alt="">
+                    </div>
+                </div>
+                <div class="col-12 col-lg-4 order-lg-1 text-right">
+                    <div class="step-right-part ">
+                        <p class="step-text">Our approach to managing your wealth provides expertise and flexibility.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="arrow-container">
+                <img class="left-arrow" src="./static/images/white-arrow.png" alt="">
+            </div>
+            <div class="row align-items-center">
+                <div class="col-12 col-lg-4 ">
+                    <div class="">
+                        <h2 class="step-title">
+                            <span class="">03</span>Automation</h2>
+                    </div>
+                </div>
+                <div class="col-12 col-lg-4">
+                    <div class="text-center steps">
+                        <img src="https://images.unsplash.com/photo-1485827404703-89b55fcc595e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8YXV0b21hdGlvbnxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=60" alt="">
+                    </div>
+                </div>
+                <div class="col-12 col-lg-4">
+                    <div class="">
+                        <p class="">No guesswork is required on your part we use expert traders and Bots to monitor
+                            and trade efficiently.</p>
+                    </div>
+                </div>
+                <div>
+                    <img class="arrow" src="./static/images/white-arrow.png" alt="">
+                </div>
+            </div>
+            <div class="row align-items-center">
+                <div class="col-12 col-lg-4 order-lg-3">
+                    <div class="">
+                        <h2 class="step-title">
+                            <span class="">04</span>ROI</h2>
+                    </div>
+                </div>
+                <div class="col-12 col-lg-4 order-lg-2">
+                    <div class="text-center steps">
+                        <img src="https://media.istockphoto.com/id/1305170107/photo/stock-market-and-finance-concept-yellow-up-arrow-symbol-glowing-amid-black-arrow-symbols-on.jpg?s=612x612&w=0&k=20&c=t_DtoM0HuMF-NJ1PMbvPCK4EYSpffvHFPHqPaE4IEjM=" alt="">
+                    </div>
+                </div>
+                <div class="col-12 col-lg-4 order-lg-1 text-right">
+                    <div class="">
+                        <p class="">Forecasts return and reward the trades and investments you make using our
+                            proprietary model.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="statistics" style="padding: 0px 150px;">
+        <div class=" head">
+            <h1 class="centered"><strong>Statistics</strong></h1>
+        </div>
+        <div class="row numbers">
+            <div class="col">
+                <div>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-receipt" viewBox="0 0 16 16">
+                      <path d="M1.92.506a.5.5 0 0 1 .434.14L3 1.293l.646-.647a.5.5 0 0 1 .708 0L5 1.293l.646-.647a.5.5 0 0 1 .708 0L7 1.293l.646-.647a.5.5 0 0 1 .708 0L9 1.293l.646-.647a.5.5 0 0 1 .708 0l.646.647.646-.647a.5.5 0 0 1 .708 0l.646.647.646-.647a.5.5 0 0 1 .801.13l.5 1A.5.5 0 0 1 15 2v12a.5.5 0 0 1-.053.224l-.5 1a.5.5 0 0 1-.8.13L13 14.707l-.646.647a.5.5 0 0 1-.708 0L11 14.707l-.646.647a.5.5 0 0 1-.708 0L9 14.707l-.646.647a.5.5 0 0 1-.708 0L7 14.707l-.646.647a.5.5 0 0 1-.708 0L5 14.707l-.646.647a.5.5 0 0 1-.708 0L3 14.707l-.646.647a.5.5 0 0 1-.801-.13l-.5-1A.5.5 0 0 1 1 14V2a.5.5 0 0 1 .053-.224l.5-1a.5.5 0 0 1 .367-.27zm.217 1.338L2 2.118v11.764l.137.274.51-.51a.5.5 0 0 1 .707 0l.646.647.646-.646a.5.5 0 0 1 .708 0l.646.646.646-.646a.5.5 0 0 1 .708 0l.646.646.646-.646a.5.5 0 0 1 .708 0l.646.646.646-.646a.5.5 0 0 1 .708 0l.646.646.646-.646a.5.5 0 0 1 .708 0l.509.509.137-.274V2.118l-.137-.274-.51.51a.5.5 0 0 1-.707 0L12 1.707l-.646.647a.5.5 0 0 1-.708 0L10 1.707l-.646.647a.5.5 0 0 1-.708 0L8 1.707l-.646.647a.5.5 0 0 1-.708 0L6 1.707l-.646.647a.5.5 0 0 1-.708 0L4 1.707l-.646.647a.5.5 0 0 1-.708 0l-.509-.51z"/>
+                      <path d="M3 4.5a.5.5 0 0 1 .5-.5h6a.5.5 0 1 1 0 1h-6a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 1 1 0 1h-6a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 1 1 0 1h-6a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 0 1 0 1h-6a.5.5 0 0 1-.5-.5zm8-6a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5z"/>
+                    </svg>
+                </div>
+                <p>ESTEEMED <br> INVESTORS</p>
+                <h3 class="count" data-target="34363">0</h3>
+            </div>
+            <div class="col">
+                <div>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-hand-thumbs-up" viewBox="0 0 16 16">
+                      <path d="M8.864.046C7.908-.193 7.02.53 6.956 1.466c-.072 1.051-.23 2.016-.428 2.59-.125.36-.479 1.013-1.04 1.639-.557.623-1.282 1.178-2.131 1.41C2.685 7.288 2 7.87 2 8.72v4.001c0 .845.682 1.464 1.448 1.545 1.07.114 1.564.415 2.068.723l.048.03c.272.165.578.348.97.484.397.136.861.217 1.466.217h3.5c.937 0 1.599-.477 1.934-1.064a1.86 1.86 0 0 0 .254-.912c0-.152-.023-.312-.077-.464.201-.263.38-.578.488-.901.11-.33.172-.762.004-1.149.069-.13.12-.269.159-.403.077-.27.113-.568.113-.857 0-.288-.036-.585-.113-.856a2.144 2.144 0 0 0-.138-.362 1.9 1.9 0 0 0 .234-1.734c-.206-.592-.682-1.1-1.2-1.272-.847-.282-1.803-.276-2.516-.211a9.84 9.84 0 0 0-.443.05 9.365 9.365 0 0 0-.062-4.509A1.38 1.38 0 0 0 9.125.111L8.864.046zM11.5 14.721H8c-.51 0-.863-.069-1.14-.164-.281-.097-.506-.228-.776-.393l-.04-.024c-.555-.339-1.198-.731-2.49-.868-.333-.036-.554-.29-.554-.55V8.72c0-.254.226-.543.62-.65 1.095-.3 1.977-.996 2.614-1.708.635-.71 1.064-1.475 1.238-1.978.243-.7.407-1.768.482-2.85.025-.362.36-.594.667-.518l.262.066c.16.04.258.143.288.255a8.34 8.34 0 0 1-.145 4.725.5.5 0 0 0 .595.644l.003-.001.014-.003.058-.014a8.908 8.908 0 0 1 1.036-.157c.663-.06 1.457-.054 2.11.164.175.058.45.3.57.65.107.308.087.67-.266 1.022l-.353.353.353.354c.043.043.105.141.154.315.048.167.075.37.075.581 0 .212-.027.414-.075.582-.05.174-.111.272-.154.315l-.353.353.353.354c.047.047.109.177.005.488a2.224 2.224 0 0 1-.505.805l-.353.353.353.354c.006.005.041.05.041.17a.866.866 0 0 1-.121.416c-.165.288-.503.56-1.066.56z"/>
+                    </svg></div>
+                <p> TRANSACTIONS IN <br> LAST 24HRS</p>
+                <h3 class="count" data-target="985">0</h3>
+            </div>
+            <div class="col">
+                <div>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-vcard" viewBox="0 0 16 16">
+                      <path d="M5 8a2 2 0 1 0 0-4 2 2 0 0 0 0 4Zm4-2.5a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1h-4a.5.5 0 0 1-.5-.5ZM9 8a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1h-4A.5.5 0 0 1 9 8Zm1 2.5a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 0 1h-3a.5.5 0 0 1-.5-.5Z"/>
+                      <path d="M2 2a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H2ZM1 4a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H8.96c.026-.163.04-.33.04-.5C9 10.567 7.21 9 5 9c-2.086 0-3.8 1.398-3.984 3.181A1.006 1.006 0 0 1 1 12V4Z"/>
+                    </svg>
+                </div>
+                <p>ACCOUNTS <br> CREATED</p>
+                <h3 class="count" data-target="43106">0</h3>
+            </div>
+            <div class="col">
+                <div>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-briefcase" viewBox="0 0 16 16">
+                      <path d="M6.5 1A1.5 1.5 0 0 0 5 2.5V3H1.5A1.5 1.5 0 0 0 0 4.5v8A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-8A1.5 1.5 0 0 0 14.5 3H11v-.5A1.5 1.5 0 0 0 9.5 1h-3zm0 1h3a.5.5 0 0 1 .5.5V3H6v-.5a.5.5 0 0 1 .5-.5zm1.886 6.914L15 7.151V12.5a.5.5 0 0 1-.5.5h-13a.5.5 0 0 1-.5-.5V7.15l6.614 1.764a1.5 1.5 0 0 0 .772 0zM1.5 4h13a.5.5 0 0 1 .5.5v1.616L8.129 7.948a.5.5 0 0 1-.258 0L1 6.116V4.5a.5.5 0 0 1 .5-.5z"/>
+                    </svg>
+                </div>
+                <p>BUSINESS <br> CONSULTANTS</p>
+                <h3 class="count" data-target="76">0</h3>
+            </div>
+        </div>
+    </section>
+    <section id="footer" style="margin-top: 200px;">
+        <div class="footer row">
+            <div class="col">
+               <p class="copyright"><span><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-c-circle" viewBox="0 0 16 16">
+                  <path d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8Zm15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0ZM8.146 4.992c-1.212 0-1.927.92-1.927 2.502v1.06c0 1.571.703 2.462 1.927 2.462.979 0 1.641-.586 1.729-1.418h1.295v.093c-.1 1.448-1.354 2.467-3.03 2.467-2.091 0-3.269-1.336-3.269-3.603V7.482c0-2.261 1.201-3.638 3.27-3.638 1.681 0 2.935 1.054 3.029 2.572v.088H9.875c-.088-.879-.768-1.512-1.729-1.512Z"/>
+                </svg></span>COPYRIGHT {{date}} ALL RIGHTS RESERVED</p>
+            </div>
+        </div>
+    </section>
+    <script>
+        const countElements = document.querySelectorAll('.count');
+
+        // Function to animate the count
+        const animateCount = (countElement, targetCount, duration) => {
+          const startCount = parseInt(countElement.innerText);
+          const countIncrement = (targetCount - startCount) / duration;
+
+          let currentCount = startCount;
+
+          const timer = setInterval(() => {
+            if (currentCount >= targetCount) {
+              clearInterval(timer);
+              currentCount = targetCount;
+            } else {
+              currentCount += countIncrement;
+              countElement.innerText = Math.floor(currentCount);
+            }
+          }, 1);
+        };
+
+        // Function to initiate count animation for all elements
+        const startCountAnimation = () => {
+          countElements.forEach((countElement) => {
+            const targetCount = parseInt(countElement.dataset.target);
+            const duration = 1000; // Duration in milliseconds
+            animateCount(countElement, targetCount, duration);
+          });
+        };
+
+        startCountAnimation();
+
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+    <!-- Bootstrap JS (Make sure to include it at the end of the body) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>

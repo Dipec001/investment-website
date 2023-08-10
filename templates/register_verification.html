@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Register Verification</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <!-- Add any CSS or styling as needed -->
+    <style>
+        body {
+            background: url('path/to/your-blur-background-image.jpg') center center / cover fixed;
+        }
+
+        .verification-popup {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8); /* Semi-transparent black background */
+            z-index: 9999;
+        }
+
+        .verification-popup-content {
+            background-color: #000;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.3); /* White shadow to make it look elevated */
+            color: #fff; /* White text color */
+            text-align: center;
+            transform: translateY(-100%); /* Initially off the top of the screen */
+            transition: transform 0.5s ease; /* Transition effect for sliding in */
+        }
+
+        .verification-popup.show {
+            transform: translateY(0); /* Slide the card into view */
+        }
+
+        .verification-popup-content h3 {
+            margin-bottom: 20px;
+        }
+
+        /* Style the submit button */
+        .verification-popup-content button {
+            background-color: #fff;
+            color: #000;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    {% with messages = get_flashed_messages() %}
+      {% if messages %}
+        <div class="alert alert-danger">
+          <ul>
+            {% for message in messages %}
+              <li><strong>{{ message }}</strong></li>
+            {% endfor %}
+          </ul>
+        </div>
+      {% endif %}
+    {% endwith %}
+    <div id="verificationPopup" class="verification-popup">
+        <div class="verification-popup-content">
+            <h3>A verification code has been sent to your email address (<span id="verificationEmail">{{ email }}</span>).</h3>
+<!--            <form method="POST" action="{{ url_for('register_verify') }}">-->
+<!--                {{ form.csrf_token }}-->
+<!--                <input type="text" name="verification_code" placeholder="Verification Code" required>-->
+<!--                <button type="submit">Confirm</button>-->
+<!--            </form>-->
+            <form action="{{ url_for('register_verify') }}" method="POST">
+            {{ form.csrf_token }}
+            <input id="otp1" type="text" name="otp1" maxlength="1" size="1" pattern="[0-9]" required>
+            <input id="otp2" type="text" name="otp2" maxlength="1" size="1" pattern="[0-9]" required>
+            <input id="otp3" type="text" name="otp3" maxlength="1" size="1" pattern="[0-9]" required>
+            <input id="otp4" type="text" name="otp4" maxlength="1" size="1" pattern="[0-9]" required>
+            <input id="otp5" type="text" name="otp5" maxlength="1" size="1" pattern="[0-9]" required>
+            <input id="otp6" type="text" name="otp6" maxlength="1" size="1" pattern="[0-9]" required>
+            <br><br>
+            <input type="submit" value="Verify OTP">
+        </form>
+
+        <script>
+            const otpInputs = document.querySelectorAll('input[name^="otp"]');
+
+            otpInputs.forEach((input, index) => {
+                input.addEventListener('input', () => {
+                    if (input.value.length === 1) {
+                        if (index < otpInputs.length - 1) {
+                            otpInputs[index + 1].focus();
+                        }
+                    }
+                });
+            });
+        </script>
+        </div>
+    </div>
+
+
+</body>
+</html>
