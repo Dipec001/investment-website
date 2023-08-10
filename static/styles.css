@@ -362,3 +362,26 @@ header {
 .text-center {
     text-align: center!important;
 }
+/* Add the CSS code here */
+@media (max-width: 1200px) {
+    .arrow {
+        display: none;
+    }
+    .left-arrow {
+        display: none;
+    }
+}
+
+/* Adjust font size for step titles on medium screens */
+@media (max-width: 1200px) {
+    .step-title {
+        font-size: 24px; /* Adjust this value as needed */
+    }
+}
+/* Adjust font size for step titles on medium screens */
+@media (max-width: 1440px) {
+    .step-title {
+        font-size: 40px; /* Adjust this value as needed */
+    }
+}
+
