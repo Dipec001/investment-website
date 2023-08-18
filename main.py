@@ -10,7 +10,6 @@ import threading
 import random
 import string
 import os
-from flask_migrate import Migrate
 
 API_KEY = 'V2RNZOK9B0N58A8A'
 
@@ -31,9 +30,6 @@ db = SQLAlchemy(app)
 
 login_manager = LoginManager()
 login_manager.init_app(app)
-
-
-migrate = Migrate(app, db)
 
 
 # CREATE TABLE
