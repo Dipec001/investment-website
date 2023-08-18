@@ -10,18 +10,21 @@ import threading
 import random
 import string
 import os
-
-EMAIL = os.environ.get('FLASK_EMAIL')
-PASSWORD = os.environ.get('FLASK_EMAIL_PASSWORD')
+from flask_migrate import Migrate
 
 API_KEY = 'V2RNZOK9B0N58A8A'
 
 app = Flask(__name__)
-app.config['SECRET_KEY'] = os.environ.get('FLASK_KEY')
+
+
+# Access environment variable
+app.config['SECRET_KEY'] = os.environ['FLASK_KEY']
+EMAIL = os.environ['FLASK_EMAIL']
+PASSWORD = os.environ['FLASK_PASSWORD']
 
 
 # CREATE DATABASE
-app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('FLASK_DATABASE_URL')
+app.config['SQLALCHEMY_DATABASE_URI'] = os.environ['DATABASE_URL']
 # Optional: But it will silence the deprecation warning in the console.
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
@@ -30,7 +33,7 @@ login_manager = LoginManager()
 login_manager.init_app(app)
 
 
-# migrate = Migrate(app, db)
+migrate = Migrate(app, db)
 
 
 # CREATE TABLE
@@ -159,7 +162,7 @@ def login():
         password = request.form.get('password')
 
         # Find user by email entered.
-        user = User.query.filter_by(email=email.lower()).first()
+        user = User.query.filter_by(email=email).first()
         if not user:
             flash("Email doesn't exist. Please check the email and try again.", 'error')
             return redirect(url_for('login'))
@@ -181,7 +184,7 @@ def login():
                     send_email('Verification Code', user.email, verification_code, recipient_email=email)
 
                     flash("Account not verified. Please verify your account.", 'error')
-                    return render_template('register_verification.html', form=login_form, email=email.lower())
+                    return render_template('register_verification.html', form=login_form, email=email)
             else:
                 flash("Password is not correct", 'error')
                 return redirect(url_for('login'))
