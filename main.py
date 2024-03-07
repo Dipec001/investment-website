@@ -23,8 +23,8 @@ PASSWORD = os.environ['FLASK_PASSWORD']
 
 
 # CREATE DATABASE
-app.config['SQLALCHEMY_DATABASE_URI'] = os.environ['DATABASE_URL']
-# app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///crypto_website.db'
+# app.config['SQLALCHEMY_DATABASE_URI'] = os.environ['DATABASE_URL']
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///crypto_website.db'
 # Optional: But it will silence the deprecation warning in the console.
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
@@ -131,13 +131,14 @@ def home():
 
 @app.route("/contact", methods=["GET", "POST"])
 def contact():
+    year = datetime.now().year
     if request.method == 'POST':
         name = request.form['name']
         email = request.form['email']
         message = request.form['message']
         send_email(name, email, message, recipient_email=email)
-        return render_template("contact.html", msg_sent=True)
-    return render_template('contact.html')
+        return render_template("contact.html", msg_sent=True, date=year)
+    return render_template('contact.html', date=year)
 
 
 def send_email(name, email, message, recipient_email):
@@ -488,17 +489,20 @@ def profile():
 
 @app.route('/about')
 def about():
-    return render_template('about.html')
+    year = datetime.now().year
+    return render_template('about.html', date=year)
 
 
 @app.route('/services')
 def services():
-    return render_template('services.html')
+    year = datetime.now().year
+    return render_template('services.html', date=year)
 
 
 @app.route('/faqs')
 def faqs():
-    return render_template('faqs.html')
+    year = datetime.now().year
+    return render_template('faqs.html', date=year)
 
 
 @app.route('/invest', methods=['GET', 'POST'])
