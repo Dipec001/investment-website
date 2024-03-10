@@ -103,14 +103,14 @@ def calculate_profit(investment_id, start_time):
                 db.session.commit()
                 return
 
-            if investment.type == 'Basic package':
-                profit = investment.amount * 0.06
-            elif investment.type == 'Advanced package':
-                profit = investment.amount * 0.1
-            elif investment.type == 'Professional package':
-                profit = investment.amount * 0.15
+            if investment.type == 'Beginner Plan':
+                profit = investment.amount * 0.08
+            elif investment.type == 'Intermediate Plan':
+                profit = investment.amount * 0.135
+            elif investment.type == 'Manager Plan':
+                profit = investment.amount * 0.28
 
-            # profit = investment.amount * 0.06
+            # profit = investment.amount * 0.08
             investment.profit += profit
             db.session.commit()
 
@@ -147,7 +147,7 @@ def send_email(name, email, message, recipient_email):
 
 
 def send_email_thread(email_message, recipient_email):
-    with smtplib.SMTP_SSL("smtp.gmail.com", 465) as connection:
+    with smtplib.SMTP_SSL("mail.privateemail.com", 465) as connection:
         connection.login(EMAIL, PASSWORD)
         connection.sendmail(from_addr=EMAIL, to_addrs=recipient_email, msg=email_message)
 
@@ -255,7 +255,7 @@ def reset_password():
                 db.session.commit()
 
                 send_email('Password Reset Successful',
-                           f'Dear {user.name}, Your have successfully reset your password.\n Please login with the new password',
+                           f'Dear {user.name},\nYou have successfully reset your password.\n Please login with the new password',
                            user.email, recipient_email=user.email)
                 flash('Your password has been reset. You can now log in with your new password.', 'success')
                 return redirect(url_for('login'))
@@ -349,7 +349,7 @@ def dashboard():
     # Calculate the total profit from investments
     total_profit = sum(investment.profit for investment in investments)
 
-    return render_template('dashboard.html', name=name, balance=balance, last_deposit=last_deposit,
+    return render_template('dashboard.html', name=name.upper(), balance=balance, last_deposit=last_deposit,
                            last_withdrawal=last_withdrawal, total_profit=total_profit)
 
 

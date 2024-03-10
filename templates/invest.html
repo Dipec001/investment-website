@@ -179,7 +179,7 @@
         <div class="sidebar-content" style="overflow-y: auto;">
           <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
             <svg class="bi pe-none me-2" width="40" height="32"><use xlink:href="#bootstrap"></use></svg>
-            <span class="fs-4"><strong>PrimeInvest</strong></span>
+            <span class="fs-4"><strong>Kings Financials</strong></span>
           </a>
           <hr>
         <ul class="nav nav-pills flex-column mb-auto">
@@ -303,7 +303,7 @@
     </script>
     <script>
         // Sample investment package options
-        var investmentPackages = ["Basic package", "Advanced package", "Professional package"];
+        var investmentPackages = ["Beginner Plan", "Intermediate Plan", "Manager Plan"];
 
         // Function to populate the select element with options
         function populatePackageOptions() {
@@ -367,16 +367,16 @@
           var maxAmount;
 
           switch (package) {
-            case "Basic package":
-              minAmount = 100;
+            case "Beginner Plan":
+              minAmount = 1090;
               maxAmount = 9999;
               break;
-            case "Advanced package":
+            case "Intermediate Plan":
               minAmount = 10000;
-              maxAmount = 49999;
+              maxAmount = 99999;
               break;
-            case "Professional package":
-              minAmount = 50000;
+            case "Manager Plan":
+              minAmount = 100000;
               maxAmount = 500000;
               break;
             default:
