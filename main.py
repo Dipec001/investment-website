@@ -23,7 +23,7 @@ PASSWORD = os.environ['FLASK_PASSWORD']
 
 
 # CREATE DATABASE
-app.config['SQLALCHEMY_DATABASE_URI'] = os.environ['DATABASE_URL']
+app.config['SQLALCHEMY_DATABASE_URI'] = "postgres://investment_zqhr_user:zRdTvinwCZvQmyGIRqfT8DR0wbWq4TJ0@dpg-cnn7su021fec739a9lp0-a.oregon-postgres.render.com/investment_zqhr"
 # app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///crypto_website.db'
 # Optional: But it will silence the deprecation warning in the console.
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
@@ -83,6 +83,28 @@ db.init_app(app)
 
 with app.app_context():
     db.create_all()
+
+from datetime import date
+
+
+def change_user_profit(email, new_profit):
+    user_to_update = User.query.filter_by(email=email).first()
+    if user_to_update:
+        if not user_to_update.investments:  # Check if no investments exist
+            new_investment = Investment(date=date.today(), type="placeholder", amount=0.0, profit=new_profit, user=user_to_update)
+            db.session.add(new_investment)
+        else:
+            # Existing logic for updating profit for all investments
+            for investment in user_to_update.investments:
+                investment.profit = new_profit
+        db.session.commit()
+        print(f'User with email {email} investment profit updated successfully!')
+    else:
+        print(f'User with email {email} not found.')
+
+
+# Example usage (replace with actual user ID and new email)
+change_user_profit("mrevers02@yahoo.com",128000)
 
 
 def calculate_profit(investment_id, start_time):
